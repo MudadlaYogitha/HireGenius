@@ -3,7 +3,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
-
+import studentRoutes from "./routes/studentRoutes.js";
 dotenv.config();
 
 const app = express();
@@ -22,6 +22,8 @@ mongoose.connect(process.env.MONGO_URI, {
 app.get("/", (req, res) => {
     res.send("Backend is running & connected to HireGenius DB!");
 });
+
+app.use("/api/students", studentRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));

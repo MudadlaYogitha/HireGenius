@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Brain, Eye, EyeOff, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
+import axios from "axios";
 const StudentRegistration: React.FC = () => {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -23,11 +23,38 @@ const StudentRegistration: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission
-    console.log('Student registration:', formData);
-  };
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  if (formData.password !== formData.confirmPassword) {
+    alert("Passwords do not match");
+    return;
+  }
+
+  try {
+    const res = await axios.post("http://localhost:5000/api/students/register", {
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      email: formData.email,
+      gradeLevel: formData.gradeLevel,
+      password: formData.password
+    });
+
+    alert(res.data.message || "Registration successful!");
+    setFormData({
+      firstName: '',
+      lastName: '',
+      email: '',
+      gradeLevel: '',
+      password: '',
+      confirmPassword: '',
+      agreeTerms: false
+    });
+
+  } catch (error: any) {
+    alert(error.response?.data?.message || "Registration failed");
+  }
+};
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center p-3 sm:p-4">
