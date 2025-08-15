@@ -34,7 +34,7 @@ const LandingPage = () => {
         {/* Hero Section */}
         <div className="text-center mb-12 sm:mb-16">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 animate-fade-in-up px-2">
-            Welcome to <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">EduConnect</span>
+            Welcome to <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">HireGenius</span>
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-6 sm:mb-8 max-w-4xl mx-auto leading-relaxed animate-fade-in-up animation-delay-200 px-4">
             Connecting students, teachers, and counselors in a unified educational platform. 

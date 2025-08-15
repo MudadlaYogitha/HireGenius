@@ -1,3 +1,4 @@
+// src/components/Header.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Brain, Menu, X } from 'lucide-react';
@@ -15,7 +16,7 @@ const Header = () => {
               <Brain className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
             </div>
             <span className="text-lg sm:text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-              hireGenius
+              HireGenius
             </span>
           </Link>
 

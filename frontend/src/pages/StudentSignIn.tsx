@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { GraduationCap, Eye, EyeOff } from 'lucide-react';
 
 const StudentSignIn = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -20,6 +21,8 @@ const StudentSignIn = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Student sign in:', formData);
+    // Redirect to main dashboard after successful sign in
+    navigate('/dashboard');
   };
 
   return (

@@ -132,7 +132,8 @@ const StudentRegistration: React.FC = () => {
                 <option value="">Select your grade level</option>
                 <option value="10">Grade 10</option>
                 <option value="12">Grade 12</option>
-                <option value="college">College</option>
+                <option value="college">UG graduate</option>
+                <option value="college">PG graduate</option>
               </select>
             </div>
 

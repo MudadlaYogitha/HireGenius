@@ -23,11 +23,29 @@ const EducatorRegistration: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission
-    console.log('Educator registration:', formData);
-  };
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  
+  try {
+    const res = await fetch("/api/educators/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+
+    const data = await res.json();
+    if (res.ok) {
+      alert("Registration successful!");
+      console.log(data);
+    } else {
+      alert(data.message || "Registration failed");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    alert("Something went wrong");
+  }
+};
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center p-3 sm:p-4">
@@ -103,7 +121,7 @@ const EducatorRegistration: React.FC = () => {
                 required
               >
                 <option value="">Select your role</option>
-                <option value="trainee">Trainee</option>
+                <option value="trainee">Trainer</option>
                 <option value="counselor">Counselor</option>
               </select>
             </div>
